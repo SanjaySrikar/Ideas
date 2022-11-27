@@ -1,0 +1,79 @@
+<body class="bg-gray  w-screen h-screen font-poppins absolute overflow-auto ">
+  <div
+    class="mt-36 mx-auto p-9 rounded-lg shadow-lg bg-white w-4/5 max-w-2xl max-h-screen h-fit space-y-10"
+  >
+    <div>
+      <h1 class="text-3xl font-bold">Register</h1>
+      <p class="text-sm text-gray">Your idea may change the world!</p>
+    </div>
+
+    <div class="flex justify-end ">
+      <button >
+        <a routerLink="/login"><- back to login</a>
+      </button>
+
+    </div>
+
+    <form (submit)="onRegister()" >
+      <div class="mb-6 flex flex-row space-x-10 w-full">
+        <div>
+          <label for="FName" class="w-1/2">First Name</label>
+          <input
+            class="w-full inline-block border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+            type="text"
+            placeholder="e.g. name"
+          />
+        </div>
+        <div>
+          <label for="LName" class="w-1/2">Last Name </label>
+          <input
+            class="w-full inline-block border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+            type="text"
+            placeholder="e.g. example"
+          />
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label for="username"> Username </label>
+        <input
+          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          type="text"
+          placeholder="e.g example_name77"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="email"> Email </label>
+        <input
+          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          type="email"
+          placeholder="e.g name@example.com"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="password"> Password </label>
+        <input
+          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          type="password"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="number"> Phone No. </label>
+        <input
+          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          type="text"
+          placeholder="e.g. 9123456742"
+        />
+      </div>
+      <div class="text-center mt-14">
+        <button
+          type="submit"
+          class="rounded-lg bg-gray w-full py-1.5 hover:text-white"
+
+        >
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</body>

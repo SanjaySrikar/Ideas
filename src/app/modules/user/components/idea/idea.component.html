@@ -1,0 +1,179 @@
+<body class="w-full min-h-screen absolute bg-gray font-poppins space-y-2">
+  <div class="mx-auto h-fit w-2/5 mt-24 px-0 py-2 flex">
+    <h1 class="text-4xl font-bold">Create An Idea</h1>
+
+    <a class="ml-auto mt-3 cursor-pointer" routerLink="/user/landing"
+      ><- Go Back</a
+    >
+  </div>
+
+  <div
+    *ngIf="editMode == true"
+    class="mx-auto h-fit w-2/5 mt-24 px-0 py-2 flex justify-end"
+  >
+    <div class="flex justify-end space-x-5">
+      <img src="/assets/edit.png" class="object-contain" />
+      <img src="/assets/close.png" class="object-contain" />
+    </div>
+  </div>
+
+  <div
+    class="mx-auto h-fit border-0 rounded-xl bg-white w-2/5 mt-14 px-2 py-2 flex flex-col"
+  >
+    <label class="text-sm text-gray"> Choose your topic </label>
+    <select
+      class="px-2 py-1 w-1/3 cursor-pointer outline-none hover:outline-none border border-gray hover:bg-light-gray rounded-lg"
+      [(ngModel)]="idea.topic"
+      required
+    >
+      <option
+        class="rounded-xl bg-gray outline-none"
+        *ngFor="let topic of topics"
+        [ngValue]="topic"
+      >
+        {{ topic }}
+      </option>
+    </select>
+  </div>
+
+  <!--TEXT EDITOR-->
+  <div
+    class="divide-light-gray rounded-xl mx-auto h-[350px] border-0 bg-white w-2/5 mt-10 px-2 py-2 shadow-lg shadow-gray space-y-5"
+  >
+    <input
+      class="px-2 py-1.5 w-full border border-gray rounded-lg hover:bg-light-gray focus:outline-none"
+      type="text"
+      name="title"
+      [(ngModel)]="idea.title"
+      placeholder="Title"
+    />
+
+    <div>
+      <div class="w-full mb-4 border border-gray rounded-lg">
+        <div class="flex items-center justify-between px-3 py-2 border-b">
+          <div class="flex flex-wrap items-center sm:divide-x">
+            <div class="flex items-center space-x-1 sm:pr-4">
+              <button
+                type="button"
+                class="p-2 cursor-pointer rounded-full hover:bg-light-gray"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="sr-only">Attach file</span>
+              </button>
+              <button
+                type="button"
+                class="p-2 text-gray-500 cursor-pointer rounded-full hover:bg-light-gray"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="sr-only">Upload image</span>
+              </button>
+            </div>
+            <div class="flex flex-wrap items-center space-x-1 sm:pl-4">
+              <button
+                type="button"
+                class="p-2 text-gray-500 cursor-pointer rounded-full hover:bg-light-gray"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="sr-only">Add emoji</span>
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="p-2 text-gray-500 cursor-pointer rounded-full hover:bg-light-gray"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Download</span>
+          </button>
+        </div>
+        <div class="px-4 py-2 bg-white rounded-b-lg w-full">
+          <label for="editor" class="sr-only">Publish post</label>
+          <textarea
+            [(ngModel)]="idea.idea"
+            [ngModelOptions]="{ standalone: true }"
+            id="editor"
+            rows="8"
+            class="focus:outline-none block w-full px-0 text-sm text-gray-800 bg-white border-0 focus:ring-0"
+            placeholder="Write an Idea..."
+            required
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="bg-white px-1 rounded-xl">
+      <angular-editor
+      [(ngModel)]="test1"
+      [config]="config"
+    ></angular-editor>
+  </div> -->
+  </div>
+  <!--ACTIONS / BUTTONS-->
+  <div
+    class="mx-auto h-fit border-0 rounded-xl w-2/5 mt-16 px-2 py-2 flex flex-col"
+  >
+    <div class="actions flex justify-end space-x-4">
+      <button
+        type="submit"
+        class="border-0 rounded-full px-3 py-0.5 bg-dark-blue text-white hover:text-gray cursor-pointer"
+        (click)="test()"
+      >
+        Post!
+      </button>
+      <a
+        class="border-0 rounded-full px-2 py-0.5 bg-dark-blue text-white hover:text-gray cursor-pointer"
+        [routerLink]="'/user/landing'"
+      >
+        Next Time?!
+      </a>
+    </div>
+  </div>
+</body>
