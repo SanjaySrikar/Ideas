@@ -4,8 +4,8 @@ type idea = {
   title: string;
   topic: string;
   idea: string;
-  upVotes: number;
-  downVotes: number;
+  upVotes ?: number;
+  downVotes ?: number;
   dateCreated ?: string
 };
 export default idea;

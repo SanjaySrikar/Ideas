@@ -41,8 +41,17 @@ export class CreateIdeaComponent implements OnInit {
   ngOnInit(): void {
     const props = this.route.snapshot.paramMap;
     const ideaID = Number(props.get('id'))
-    const target = Ideas.find(ele => ele.id == ideaID)
-    this.idea = target
+    if(ideaID == 0){
+      this.idea = {
+        name : '',
+        title : '',
+        idea : '',
+        topic : ''
+      }
+    } else {
+      const target = Ideas.find(ele => ele.id == ideaID)
+      this.idea = target
+    }
   }
 
   test() {

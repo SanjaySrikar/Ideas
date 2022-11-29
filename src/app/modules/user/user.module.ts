@@ -16,6 +16,7 @@ import { MyIdeasComponent } from './components/my-ideas/my-ideas.component';
 import { IdeaFeedComponent } from './components/idea-feed/idea-feed.component';
 import { UserComponent } from './components/user/user.component';
 import { IdeaCardComponent } from './components/idea-card/idea-card.component';
+import { SortTopicPipe } from './pipes/sort-topic.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { IdeaCardComponent } from './components/idea-card/idea-card.component';
     IdeaFeedComponent,
     UserComponent,
     IdeaCardComponent,
+    SortTopicPipe,
 
   ],
   imports: [
@@ -38,6 +40,9 @@ import { IdeaCardComponent } from './components/idea-card/idea-card.component';
     AngularEditorModule,
     HttpClientModule,
     RichTextEditorAllModule
+  ],
+  exports : [
+    IdeaFeedComponent
   ]
 })
 export class UserModule { }

@@ -11,11 +11,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
   },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () =>
-  //     import('./modules/admin/admin.module').then((m) => m.AdminModule),
-  // },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];
 
