@@ -1,0 +1,48 @@
+<body class="w-full min-h-screen absolute bg-gray font-poppins">
+  <app-add-topics [topics]="topics" (removeTopicEvent) = "removeTopic($event)"></app-add-topics>
+  <div
+    class="divide-light-gray rounded-t-lg mx-auto border-0 shadow-lg shadow-dark-blue border-dark-blue min-h-screen bg-white w-2/5 mt-10 px-2 py-2 max-h-max space-y-10"
+  >
+    <div class="text-center p-2">
+      <h1 class="text-4xl font-bold">Ideas</h1>
+      <h1 class="">choose ideas for voting</h1>
+    </div>
+
+    <div>
+      <div class="feed h-full px-2 py-2" *ngFor="let topic of topics">
+        <h1 class="p-2 cursor-default font-bold flex space-x-2">
+          <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{
+            topic
+          }}
+        </h1>
+        <div class="feed-for-topics flex flex-col">
+          <app-admin-idea-list
+            [ideas]="ideas"
+            [topic]="topic"
+            (pollEvent) = "createPoll($event)"
+          ></app-admin-idea-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+  class="topic-add absolute p-2 top-52 right-24 w-2/12 h-fit bg-white rounded-lg shadow-xl shadow-dark-blue"
+>
+  <h1 class="font-semibold text-lg text-center">Polls</h1>
+
+  <div class="mt-5 flex flex-row" *ngFor="let poll of poll_payload">
+    <h1 class="p-2 cursor-default font-bold flex space-x-2">
+      <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{ poll.topic_id }}
+    </h1>
+    {{poll.ideas}}
+    <button class="ml-auto">
+      <img
+        src="/assets/close.png"
+        class="object-contain"
+      />
+    </button>
+  </div>
+</div>
+
+</body>

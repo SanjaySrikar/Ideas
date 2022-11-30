@@ -69,6 +69,16 @@ const Ideas = [
     upVotes: 7,
     downVotes: 2
   },
+  {
+    id : 8,
+    name: 'Deca',
+    topic: 'Python',
+    title: 'Scikit-Leanr Library',
+    idea: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius sit dolorum reprehenderit illum tempore obcaecati saepe tenetur autem officiis aliquid eum, maiores est accusantium id eaque ullam, totam aspernatur. Aut!',
+    dateCreated: '04-06-2022',
+    upVotes: 15,
+    downVotes: 24
+  },
 ];
 
 export default Ideas;

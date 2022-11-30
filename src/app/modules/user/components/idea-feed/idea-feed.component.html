@@ -1,4 +1,4 @@
-<body class="w-full min-h-screen absolute bg-gray font-poppins">
+<body class="w-full min-h-screen absolute bg-gray font-poppins ">
   <div
     *ngIf="admin == true && adminSetting == true"
     id="dropdown"
@@ -10,14 +10,16 @@
     >
       <li >
         <a
-          href="#"
+          [routerLink]=""
+          routerLinkActive="active"
           class="block py-2 px-4 hover:text-gray"
           >Add</a
         >
       </li>
       <li>
         <a
-          href="#"
+          [routerLink]=""
+          routerLinkActive="active"
           class="block py-2 px-4  hover:text-gray "
           >Remove</a
         >
@@ -27,7 +29,7 @@
   <div
     class="divide-light-gray rounded-t-lg mx-auto border-b-0 min-h-screen bg-gray w-2/5 mt-10 px-2 py-2 max-h-max shadow-lg shadow-gray space-y-10"
   >
-    <div class="bg-white rounded-lg px-2 py-2 flex">
+    <div class="bg-white rounded-lg px-2 py-2 flex shadow-lg shadow-dark-blue">
       <button
         [routerLink]="['/user/idea', 0]"
         class="px-2 py-2 hover:bg-light-gray rounded-full flex space-x-4"
@@ -53,7 +55,7 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-xl flex flex-wrap p-2 items-center">
+    <div class="bg-white rounded-xl flex flex-wrap p-2 items-center shadow-lg shadow-dark-blue">
       <span
         *ngFor="let topic of filter_topics"
         class="m-2 px-2 py-1 flex items-center cursor-default bg-gray w-fit rounded-full text-sm font-semibold text-gray-600"
@@ -91,7 +93,7 @@
 
     <div
       *ngFor="
-        let idea of ideas | sortTopic: filter_topics | sortByString: value:name
+        let idea of ideas | sortTopic: filter_topics | sortByString: value: name
       "
     >
       <div

@@ -6,7 +6,12 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminLandingPageComponent } from './components/admin-landing-page/admin-landing-page.component';
 import { UserModule } from "../user/user.module";
 import { AdminNavBarComponent } from './components/admin-nav-bar/admin-nav-bar.component';
-import { VotingStatusComponent } from './components/voting-status/voting-status.component';
+import { AdminIdeaListComponent } from './components/admin-idea-list/admin-idea-list.component';
+import { AdminFeedComponent } from './components/admin-feed/admin-feed.component';
+import { AddTopicsComponent } from './components/add-topics/add-topics.component';
+import { FormsModule } from '@angular/forms';
+import { CollapseCardComponent } from './components/collapse-card/collapse-card.component';
+import { VotingTabComponent } from './components/voting-tab/voting-tab.component';
 
 
 
@@ -15,12 +20,17 @@ import { VotingStatusComponent } from './components/voting-status/voting-status.
         AdminComponent,
         AdminLandingPageComponent,
         AdminNavBarComponent,
-        VotingStatusComponent,
+        AdminIdeaListComponent,
+        AdminFeedComponent,
+        AddTopicsComponent,
+        CollapseCardComponent,
+        VotingTabComponent,
 
     ],
     imports: [
         CommonModule,
         AdminRoutingModule,
+        FormsModule,
         UserModule
     ]
 })

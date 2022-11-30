@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VotingStatusComponent } from './voting-status.component';
+import { CollapseCardComponent } from './collapse-card.component';
 
-describe('VotingStatusComponent', () => {
-  let component: VotingStatusComponent;
-  let fixture: ComponentFixture<VotingStatusComponent>;
+describe('CollapseCardComponent', () => {
+  let component: CollapseCardComponent;
+  let fixture: ComponentFixture<CollapseCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VotingStatusComponent ]
+      declarations: [ CollapseCardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VotingStatusComponent);
+    fixture = TestBed.createComponent(CollapseCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

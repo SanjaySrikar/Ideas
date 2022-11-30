@@ -1,0 +1,4 @@
+<div class="cursor-pointer"  (click)="toggleContent()" >
+  <h1 class="text-xl ml-2 hover:text-gray">{{title}}</h1>
+  <ng-content *ngIf="showContent"></ng-content>
+</div>

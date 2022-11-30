@@ -1,0 +1,31 @@
+<div
+  class="card w-full mx-2 mt-2 p-2 flex space-x-5"
+  *ngFor="let idea of ideas | sortTopic: [topic]"
+>
+  <img src="/assets/user.png" class="object-contain" />
+  <div
+    class="content w-full p-2 bg-light-gray rounded-xl border-0 cursor-pointer shadow-md shadow-dark-blue"
+  >
+    <app-collapse-card [title]="idea.title">
+      <h1 class="text-xs px-2">// posted by {{ idea.name }}</h1>
+      <h1 class="mt-2 p-2">{{ idea.idea }}</h1>
+    </app-collapse-card>
+  </div>
+  <div class="actions flex space-x-2">
+
+    <button>
+      <img (click)="chooseIdea(idea.id)" src="/assets/plus1.png" />
+    </button>
+    <!-- <span *ngIf="payload.ideas.length != 0">selected {{payload.ideas.length}}</span> -->
+    <button  (click)="removeIdea(idea.id)"><img src="/assets/close.png" /></button>
+  </div>
+  <!--ONLY IF ITS SELECTED......-->
+  <span *ngIf="test[idea.id] == true" class="ml-auto"><img src="/assets/done.png" /></span>
+</div>
+<button
+  *ngIf="payload.ideas.length == 2"
+  (click)="submitPoll()"
+  class="bg-light-gray px-2 rounded-lg flex ml-auto mt-4"
+>
+  confirm?
+</button>
