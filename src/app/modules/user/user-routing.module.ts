@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'landing', pathMatch: 'full', component: LandingPageComponent },
       { path: 'idea/:id', pathMatch: 'full', component: CreateIdeaComponent },
-      { path: 'my-ideas', pathMatch: 'full', data : {editMode : true} ,component: MyIdeasComponent },
+      { path: 'my-ideas', pathMatch: 'full' ,component: MyIdeasComponent },
       { path: '', pathMatch: 'full', redirectTo: 'landing' },
     ],
   },

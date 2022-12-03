@@ -1,7 +1,5 @@
 import { Component, OnInit, Pipe } from '@angular/core';
 import { Router } from '@angular/router';
-import Ideas from 'src/app/mock-data/ideas';
-import types from '../../../../mock-data/types';
 
 @Component({
   selector: 'app-landing-page',

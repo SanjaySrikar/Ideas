@@ -7,20 +7,51 @@
       <p class="text-sm text-gray">Share your idea!</p>
     </div>
 
-    <form (submit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+      <span *ngIf="error" class="text-xs text-red">Incorrect details or not registered</span>
       <div class="mb-6">
         <label for="username"> Username </label>
         <input
+        [ngClass]="{
+          'border-b-light-red':
+            !userForm.controls['username'].valid && submitted
+        }"
           class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="text"
+          formControlName="username"
         />
+        <span
+        class="text-xs text-red"
+        *ngIf="userForm.controls['username'].errors?.['required'] && submitted"
+        >This field is required</span
+      >
+      <span
+        class="text-xs text-red"
+        *ngIf="userForm.controls['username'].errors?.['minlength'] "
+        >Username must be more than 6 characters</span
+      >
       </div>
       <div class="mb-6">
         <label for="password"> Password </label>
         <input
+        [ngClass]="{
+          'border-b-light-red':
+            !userForm.controls['password'].valid && submitted
+        }"
           class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="password"
+          formControlName="password"
         />
+        <span
+        class="text-xs text-red"
+        *ngIf="userForm.controls['password'].errors?.['required'] && submitted"
+        >This field is required</span
+      >
+      <span
+        class="text-xs text-red"
+        *ngIf="userForm.controls['password'].errors?.['minlength'] "
+        >Password must be more than 6 characters</span
+      >
       </div>
       <div class="text-center mt-14">
         <button

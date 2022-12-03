@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortByStringPipe implements PipeTransform {
   transform(value: any[], ...args: string[]): any[] {
-
+    // console.log(value,args);
     if(args[1] != undefined){
       let result = value.filter(ele => ele.name == args[1])
       if (args[0] == 'upVotes') {

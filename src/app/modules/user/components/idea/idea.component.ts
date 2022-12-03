@@ -1,25 +1,59 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import idea from 'src/app/models/idea';
-import topics from '../../../../mock-data/topics';
+import { topic } from 'src/app/models/topic';
+import { IdeaService } from 'src/app/services/idea.service';
+import { LoginService } from 'src/app/services/login.service';
+import { TopicService } from 'src/app/services/topic.service';
 @Component({
   selector: 'app-idea',
   templateUrl: './idea.component.html',
   styleUrls: ['./idea.component.css'],
 })
-
 export class IdeaComponent implements OnInit {
-  @Input() idea : idea ;
-  @Input() editMode : boolean
-  topics!: any;
-  constructor(private router : ActivatedRoute) {
-    this.topics = topics;
+  @Input() idea: idea;
+  @Input() editMode: boolean;
+  topics!: topic[];
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private _topicService: TopicService,
+    private _loginService: LoginService,
+    private _ideaService: IdeaService
+  ) {}
+  getTopics() {
+    this._topicService.getTopics().subscribe((data) => {
+      this.topics = data;
+    });
   }
 
   ngOnInit(): void {
-
+    if (this.route.snapshot.params['id'] != 0) {
+      console.log(this.route.snapshot.params['id']);
+      this._ideaService
+        .getIdeaById(this.route.snapshot.params['id'])
+        .subscribe((data) => {
+          this.idea = data;
+        });
+    }
+    this.idea.name = this._loginService.getUserName();
+    this.getTopics();
   }
-  test(){
-
+  onSubmit() {
+    if (this.route.snapshot.params['id'] != 0) {
+      this._ideaService
+        .updateIdea(this.idea, this.route.snapshot.params['id'])
+        .subscribe((data) => {
+          alert('Idea updated successfully.');
+          this.router.navigate(['/user/my-ideas']);
+        });
+    } else {
+      this._ideaService.createIdea(this.idea).subscribe((data) => {
+        alert('Idea created successfully.');
+        setTimeout(() => {
+          this.router.navigate(['/user/my-ideas']);
+        }, 500);
+      });
+    }
   }
 }

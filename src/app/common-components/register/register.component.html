@@ -1,4 +1,4 @@
-<body class="bg-gray  w-screen h-screen font-poppins absolute overflow-auto ">
+<body class="bg-gray w-screen h-screen font-poppins absolute overflow-auto">
   <div
     class="mt-36 mx-auto p-9 rounded-lg shadow-lg bg-white w-4/5 max-w-2xl max-h-screen h-fit space-y-10"
   >
@@ -7,69 +7,124 @@
       <p class="text-sm text-gray">Your idea may change the world!</p>
     </div>
 
-    <div class="flex justify-end ">
-      <button >
+    <div class="flex justify-end">
+      <button>
         <a routerLink="/login"><- back to login</a>
       </button>
-
     </div>
 
-    <form (submit)="onRegister()" >
+    <form (ngSubmit)="onRegister()" [formGroup]="userForm">
       <div class="mb-6 flex flex-row space-x-10 w-full">
         <div>
           <label for="FName" class="w-1/2">First Name</label>
           <input
+            [ngClass]="{
+              'border-b-light-red':
+                !userForm.controls['fname'].valid && submitted
+            }"
             class="w-full inline-block border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
             type="text"
+            formControlName="fname"
             placeholder="e.g. name"
           />
+          <span
+            class="text-xs text-red"
+            *ngIf="userForm.controls['fname'].errors?.['required'] && submitted"
+            >This field is required</span
+          >
         </div>
         <div>
           <label for="LName" class="w-1/2">Last Name </label>
           <input
+            [ngClass]="{
+              'border-b-light-red':
+                !userForm.controls['lname'].valid && submitted
+            }"
             class="w-full inline-block border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
             type="text"
+            formControlName="lname"
             placeholder="e.g. example"
           />
+          <span
+            class="text-xs text-red"
+            *ngIf="userForm.controls['lname'].errors?.['required'] && submitted"
+            >This field is required</span
+          >
         </div>
       </div>
 
       <div class="mb-6">
         <label for="username"> Username </label>
         <input
+          [ngClass]="{
+            'border-b-light-red':
+              !userForm.controls['username'].valid && submitted
+          }"
           class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="text"
+          formControlName="username"
           placeholder="e.g example_name77"
         />
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['username'].errors?.['required'] && submitted"
+          >This field is required</span
+        >
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['username'].errors?.['minlength'] "
+          >Username must be more than 6 characters</span
+        >
       </div>
       <div class="mb-6">
         <label for="email"> Email </label>
         <input
+          [ngClass]="{
+            'border-b-light-red': !userForm.controls['email'].valid && submitted
+          }"
           class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="email"
+          formControlName="email"
           placeholder="e.g name@example.com"
         />
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['email'].errors?.['required'] && submitted"
+          >This field is required</span
+        >
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['email'].errors?.['pattern'] "
+          >Please enter a valid email</span
+        >
       </div>
       <div class="mb-6">
         <label for="password"> Password </label>
         <input
+          [ngClass]="{
+            'border-b-light-red':
+              !userForm.controls['password'].valid && submitted
+          }"
           class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="password"
+          formControlName="password"
         />
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['password'].errors?.['required'] && submitted"
+          >This field is required</span
+        >
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['password'].errors?.['minlength'] "
+          >Password must be more than 6 characters</span
+        >
       </div>
-      <div class="mb-6">
-        <label for="number"> Phone No. </label>
-        <input
-          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
-          type="text"
-          placeholder="e.g. 9123456742"
-        />
-      </div>
+
       <div class="text-center mt-14">
         <button
           type="submit"
           class="rounded-lg bg-gray w-full py-1.5 hover:text-white"
-
         >
           Register
         </button>

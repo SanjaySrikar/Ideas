@@ -3,18 +3,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'sortTopic',
-
 })
 export class SortTopicPipe implements PipeTransform {
-
   transform(value: any, args: any[]): any {
+    // console.log("value " ,  value);
+    // console.log("args " ,  args);
 
-    if(args.length == 1){
-
-      return value.filter((ele) =>ele.topic==args[0])
-    }
-    return value.filter((ele) =>
-     args.findIndex(e => e == ele.topic) > -1)
+    return value.filter(
+      (ele) => args.findIndex((e) => e.name == ele.topic) > -1
+    );
   }
-
 }

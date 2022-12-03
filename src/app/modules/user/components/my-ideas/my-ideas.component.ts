@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-my-ideas',
@@ -7,11 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./my-ideas.component.css'],
 })
 export class MyIdeasComponent implements OnInit {
-  editMode: boolean;
-  constructor(private router: ActivatedRoute) {
+  name : string;
+  constructor(private router: ActivatedRoute , private _loginService: LoginService) {
     //
-    this.editMode = this.router.snapshot.data['editMode'];
-
+    // this.editMode = this.router.snapshot.data['editMode'];
+    this.name = this._loginService.getUserName();
   }
   ngOnInit(): void {}
 }

@@ -5,10 +5,10 @@
     class="absolute right-[420px] top-[182px] z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
   >
     <ul
-      class="py-1 text-sm divide-y-2 divide-light-gray "
+      class="py-1 text-sm divide-y-2 divide-light-gray"
       aria-labelledby="dropdownDefault"
     >
-      <li >
+      <li>
         <a
           [routerLink]=""
           routerLinkActive="active"
@@ -20,7 +20,7 @@
         <a
           [routerLink]=""
           routerLinkActive="active"
-          class="block py-2 px-4  hover:text-gray "
+          class="block py-2 px-4 hover:text-gray"
           >Remove</a
         >
       </li>
@@ -54,13 +54,15 @@
         </select>
       </div>
     </div>
-
-    <div class="bg-white rounded-xl flex flex-wrap p-2 items-center shadow-lg shadow-dark-blue">
+    <!--TOPICS AREA-->
+    <div
+      class="bg-white rounded-xl flex flex-wrap p-2 items-center shadow-lg shadow-dark-blue"
+    >
       <span
-        *ngFor="let topic of filter_topics"
+        *ngFor="let topic of topics"
         class="m-2 px-2 py-1 flex items-center cursor-default bg-gray w-fit rounded-full text-sm font-semibold text-gray-600"
       >
-        {{ topic }}
+        {{ topic.name }}
         <button class="cursor-pointer" (click)="removeTopic(topic)">
           <img src="/assets/close1.png" class="ml-1 w-4 object-contain" />
         </button>
@@ -72,33 +74,33 @@
         [(ngModel)]="_topic"
         (ngModelChange)="addTopic($event)"
       >
+        <option disabled class="rounded-xl bg-gray outline-none w-fit">
+          choose a topic
+        </option>
+
         <option
-          *ngFor="let topic of topics"
-          [ngValue]="topic"
+          *ngFor="let topic of topics$ "
           class="rounded-xl bg-gray outline-none w-fit"
         >
-          {{ topic }}
+          {{ topic.name }}
         </option>
       </select>
       <button (click)="toggleSel()" class="ml-1">
         <img src="/assets/plus.png" class="cursor-pointer object-contain" />
       </button>
-      <div *ngIf="admin == true" class="admin-add-topics ml-auto">
-        <!-- ONLY ENABLE FOR ADMIN -->
-        <button class="cursor-pointer" (click)="adminToggle()">
-          <img src="/assets/settings.png" alt="" />
-        </button>
-      </div>
     </div>
+
+    <!--CARD AREA-->
 
     <div
       *ngFor="
-        let idea of ideas | sortTopic: filter_topics | sortByString: value: name
+        let idea of ideas$
+          | async
+          | sortTopic: topics
+          | sortByString: value:name
       "
     >
-      <div
-        class="card w-full h-96 bg-white rounded-xl shadow-md flex space-x-2"
-      >
+      <div>
         <app-idea-card [idea]="idea" [editMode]="editMode"></app-idea-card>
       </div>
     </div>
