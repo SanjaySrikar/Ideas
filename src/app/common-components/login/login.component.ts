@@ -38,8 +38,13 @@ export class LoginComponent implements OnInit {
           this.userName = value.username;
           localStorage.setItem('user_id', JSON.stringify(this.user_id));
           localStorage.setItem('userName', JSON.stringify(this.userName));
-          this._loginService.getUserRole()
-          this.router.navigateByUrl('user');
+          const role:string = this._loginService.getUserRole()
+          if(role=="ADMIN"){
+            this.router.navigate(['/admin']);
+          }else{
+            this.router.navigate(['/user']);
+          }
+
         },
 
         error(err) {

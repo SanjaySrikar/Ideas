@@ -1,2 +1,2 @@
-const types = ['name' , 'title' , 'upVotes' , 'downVotes','createdDate']
+const types = ['name' , 'title' , 'votes' ,'createdDate']
 export default types;

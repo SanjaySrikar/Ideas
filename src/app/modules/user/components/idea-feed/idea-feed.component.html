@@ -1,51 +1,28 @@
-<body class="w-full min-h-screen absolute bg-gray font-poppins ">
+<body
+  class="w-full min-h-screen absolute font-poppins bg-cover bg-bottom"
+  background="/assets/circle2.svg"
+>
   <div
-    *ngIf="admin == true && adminSetting == true"
-    id="dropdown"
-    class="absolute right-[420px] top-[182px] z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+    class="bg-gray rounded-t-lg mx-auto border-b-0 min-h-screen w-2/5 mt-10 px-2 py-2 max-h-max space-y-10"
   >
-    <ul
-      class="py-1 text-sm divide-y-2 divide-light-gray"
-      aria-labelledby="dropdownDefault"
+    <div
+      class="rounded-lg border border-jet-blue px-2 py-2 flex shadow-lg items-center shadow-dark-blue"
     >
-      <li>
-        <a
-          [routerLink]=""
-          routerLinkActive="active"
-          class="block py-2 px-4 hover:text-gray"
-          >Add</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]=""
-          routerLinkActive="active"
-          class="block py-2 px-4 hover:text-gray"
-          >Remove</a
-        >
-      </li>
-    </ul>
-  </div>
-  <div
-    class="divide-light-gray rounded-t-lg mx-auto border-b-0 min-h-screen bg-gray w-2/5 mt-10 px-2 py-2 max-h-max shadow-lg shadow-gray space-y-10"
-  >
-    <div class="bg-white rounded-lg px-2 py-2 flex shadow-lg shadow-dark-blue">
       <button
         [routerLink]="['/user/idea', 0]"
-        class="px-2 py-2 hover:bg-light-gray rounded-full flex space-x-4"
+        *ngIf="!admin"
+        class="px-2 py-2 rounded-full flex space-x-4"
       >
-        <img src="/assets/plus.png" />
-        <router-outlet></router-outlet>
-        <h1>Idea?!</h1>
+        <img src="/assets/plus2.png" class="hover:bg-gray rounded-full" />
+        <h1 class="hover:text-light-gray">Create Idea?</h1>
       </button>
-
-      <div class="ml-auto">
+      <div class="ml-auto bg-gray">
         <select
-          class="px-2 py-2 cursor-pointer outline-none hover:bg-light-gray rounded-xl"
+          class="px-2 py-2 cursor-pointer outline-none bg-gray hover:text-light-gray rounded-xl"
           [(ngModel)]="value"
         >
           <option
-            class="rounded-xl bg-gray outline-none"
+            class="rounded-xl outline-none"
             *ngFor="let type of types"
             [ngValue]="type"
           >
@@ -56,15 +33,18 @@
     </div>
     <!--TOPICS AREA-->
     <div
-      class="bg-white rounded-xl flex flex-wrap p-2 items-center shadow-lg shadow-dark-blue"
+      class="rounded-xl flex flex-wrap p-2 border border-jet-blue items-center shadow-lg shadow-dark-blue"
     >
       <span
         *ngFor="let topic of topics"
-        class="m-2 px-2 py-1 flex items-center cursor-default bg-gray w-fit rounded-full text-sm font-semibold text-gray-600"
+        class="m-2 px-2 py-1 flex items-center cursor-default w-fit rounded-full text-sm font-semibold"
       >
         {{ topic.name }}
         <button class="cursor-pointer" (click)="removeTopic(topic)">
-          <img src="/assets/close1.png" class="ml-1 w-4 object-contain" />
+          <img
+            src="/assets/close3.png"
+            class="ml-1 hover:bg-gray rounded-full w-4 object-contain"
+          />
         </button>
       </span>
 
@@ -79,7 +59,7 @@
         </option>
 
         <option
-          *ngFor="let topic of topics$ "
+          *ngFor="let topic of topics$"
           class="rounded-xl bg-gray outline-none w-fit"
         >
           {{ topic.name }}
@@ -96,8 +76,8 @@
       *ngFor="
         let idea of ideas$
           | async
-          | sortTopic: topics
-          | sortByString: value:name
+          | sortTopic : topics
+          | sortByString : value : name
       "
     >
       <div>

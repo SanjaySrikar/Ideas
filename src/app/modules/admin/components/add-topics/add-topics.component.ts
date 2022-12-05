@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { topic } from 'src/app/models/topic';
+import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
   selector: 'app-add-topics',
@@ -6,10 +8,14 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./add-topics.component.css'],
 })
 export class AddTopicsComponent implements OnInit {
-  constructor() {}
-  @Input() topics: any[];
-  @Output() removeTopicEvent = new EventEmitter<string>();
-  topicAdd: string;
+  constructor(private _topicService : TopicService) {}
+  @Input() topics: topic[];
+  @Output() removeTopicEvent = new EventEmitter<topic>();
+  @Output() addTopicEvent = new EventEmitter<topic>();
+  topicAdd: topic = {
+    id: 0,
+    name: '',
+  };
   addTopicBtn: boolean = false;
 
   ngOnInit(): void {}
@@ -18,11 +24,10 @@ export class AddTopicsComponent implements OnInit {
     this.addTopicBtn = !this.addTopicBtn;
   }
   addTopic() {
-    this.topics.push(this.topicAdd);
-    this.topicAdd = '';
-    this.addTopicBtn = false;
+    this.addTopicEvent.emit(this.topicAdd);
+    this.addTopicClick();
   }
-  removeTopic(value: string) {
+  removeTopic(value: topic) {
     this.removeTopicEvent.emit(value);
   }
 }

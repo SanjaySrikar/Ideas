@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { UserGuard } from './user.guard';
@@ -6,7 +7,9 @@ describe('UserGuard', () => {
   let guard: UserGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     guard = TestBed.inject(UserGuard);
   });
 

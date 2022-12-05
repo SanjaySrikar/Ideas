@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PollService } from 'src/app/services/poll.service';
 
 import { VotingTabComponent } from './voting-tab.component';
 
@@ -8,7 +10,9 @@ describe('VotingTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VotingTabComponent ]
+      declarations: [ VotingTabComponent ],
+      providers : [PollService],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 

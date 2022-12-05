@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserModule } from 'src/app/modules/user/user.module';
 
 import { AdminIdeaListComponent } from './admin-idea-list.component';
 
@@ -8,7 +9,8 @@ describe('AdminIdeaCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminIdeaListComponent ]
+      declarations: [ AdminIdeaListComponent ],
+      imports: [UserModule]
     })
     .compileComponents();
 

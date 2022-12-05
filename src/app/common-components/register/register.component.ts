@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = this.fb.group({
       id: null,
-      fname: ['', [Validators.required]],
-      lname: ['', [Validators.required]],
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
       username: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       email: [
@@ -45,16 +45,12 @@ export class RegisterComponent implements OnInit {
     // upon success navigate back to login
     this.submitted = true;
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
-      this._loginService.register(this.userForm.value).subscribe(
-        (data: user) => {
+      this._loginService
+        .register(this.userForm.value)
+        .subscribe((data: user) => {
           this.user_id = data.id;
           this.backToLogin();
-
-        },
-        (err: any) => console.log(err)
-      );
-
+        });
     }
   }
 }

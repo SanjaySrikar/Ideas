@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminLandingPageComponent } from './components/admin-landing-page/admin-landing-page.component';
@@ -12,7 +11,6 @@ import { AddTopicsComponent } from './components/add-topics/add-topics.component
 import { FormsModule } from '@angular/forms';
 import { CollapseCardComponent } from './components/collapse-card/collapse-card.component';
 import { VotingTabComponent } from './components/voting-tab/voting-tab.component';
-
 
 
 @NgModule({

@@ -1,7 +1,14 @@
-<body class="w-full min-h-screen absolute bg-gray font-poppins">
-  <app-add-topics [topics]="topics" (removeTopicEvent) = "removeTopic($event)"></app-add-topics>
+<body
+  class="w-full min-h-screen absolute bg-gray font-poppins bg-cover bg-bottom"
+  background="/assets/circle2.svg"
+>
+  <app-add-topics
+    [topics]="topics"
+    (removeTopicEvent)="removeTopic($event)"
+    (addTopicEvent)="addTopic($event)"
+  ></app-add-topics>
   <div
-    class="divide-light-gray rounded-t-lg mx-auto border-0 shadow-lg shadow-dark-blue border-dark-blue min-h-screen bg-white w-2/5 mt-10 px-2 py-2 max-h-max space-y-10"
+    class="divide-light-gray rounded-t-lg mx-auto border-2 border-jet-blue shadow-lg shadow-dark-blue min-h-screen bg-gray w-2/5 mt-10 px-2 py-2 max-h-max space-y-10"
   >
     <div class="text-center p-2">
       <h1 class="text-4xl font-bold">Ideas</h1>
@@ -12,14 +19,14 @@
       <div class="feed h-full px-2 py-2" *ngFor="let topic of topics">
         <h1 class="p-2 cursor-default font-bold flex space-x-2">
           <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{
-            topic
+            topic.name
           }}
         </h1>
         <div class="feed-for-topics flex flex-col">
           <app-admin-idea-list
             [ideas]="ideas"
             [topic]="topic"
-            (pollEvent) = "createPoll($event)"
+            (pollEvent)="createPoll($event)"
           ></app-admin-idea-list>
         </div>
       </div>
@@ -27,22 +34,35 @@
   </div>
 
   <div
-  class="topic-add absolute p-2 top-52 right-24 w-2/12 h-fit bg-white rounded-lg shadow-xl shadow-dark-blue"
->
-  <h1 class="font-semibold text-lg text-center">Polls</h1>
+    class="topic-add absolute p-2 top-52 right-[2rem] w-3/12 h-fit bg-gray border-2 border-jet-blue rounded-lg shadow-xl shadow-dark-blue"
+  >
+    <h1 class="font-semibold text-lg text-center">Polls</h1>
 
-  <div class="mt-5 flex flex-row" *ngFor="let poll of poll_payload">
-    <h1 class="p-2 cursor-default font-bold flex space-x-2">
-      <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{ poll.topic_id }}
-    </h1>
-    {{poll.ideas}}
-    <button class="ml-auto">
-      <img
-        src="/assets/close.png"
-        class="object-contain"
-      />
-    </button>
+    <div
+      class="mt-5 flex flex-row"
+      *ngFor="let poll of poll_payload"
+      class="flex flex-col"
+    >
+      <h1 class="p-2 cursor-default font-bold flex space-x-2">
+        <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{
+          poll.topic.name
+        }}
+      </h1>
+      <div
+        *ngFor="let idea of poll.ideas"
+        class="flex justify-evenly space-x-5"
+      >
+        <h1>{{ idea.title }}</h1>
+        <h1 class="text-xs">{{ idea.name }}</h1>
+      </div>
+      <div class="ml-auto flex items-center mt-10 space-x-5">
+        <button class="" (click)="removeIdea(poll.topic)">
+          <img src="/assets/close.png" class="object-contain" />
+        </button>
+        <button class="  " (click)="confirmPoll()">
+          <img src="/assets/done.png" alt="">
+        </button>
+      </div>
+    </div>
   </div>
-</div>
-
 </body>

@@ -1,43 +1,47 @@
-<div class="min-w-full flex grow-[6] space-x-10 shadow-lg  rounded-xl shadow-dark-blue">
-  <span
-    class="vote absolute bg-light-gray w-10 h-96 shadow-md min-h-max max-w-fit rounded-tl-lg rounded-bl-lg px-0.5 py-1.5 inline-block space-y-1"
-  >
-    <button class="ease-in-out focus:bg-light-green hover:bg-gray rounded-full">
+<div
+  class="min-w-full flex grow-[6] space-x-10 shadow-lg  border border-jet-blue rounded-xl shadow-dark-blue "
+>
+<span
+[ngClass]="{'fill-light-red': hasVoted}"
+class="vote inline-block absolute  hover:fill-light-red   w-10 h-96 shadow-md min-h-max max-w-fit rounded-tl-lg rounded-bl-lg px-0.5 py-1.5  space-y-1"
+>
+
+  <svg width="36" height="36" class="rotate-180 cursor-pointer" (click)="upVote(idea.id)">
+    <path d="M2 10h32L18 26 2 10z" fill="fill-red"></path>
+  </svg>
+  <h1 class="ml-3">{{idea.votes.length}}</h1>
+    <!-- <button class="ease-in-out focus:bg-light-green hover:bg-gray rounded-full">
       <img class="cursor-pointer object-contain" src="/assets/upvote.png" />
     </button>
     <button class="ease-in-out focus:bg-light-red hover:bg-gray rounded-full">
       <img
-        class="rotate-180 cursor-pointer object-contain"
+        class="rotate-180 cursor-pointer object-contain "
         src="/assets/upvote.png"
       />
-    </button>
+    </button> -->
   </span>
-  <div
-    class="w-full h-96 bg-white flex space-x-2 rounded-tr-lg rounded-br-lg "
-  >
+  <div class="w-full h-96 flex space-x-2 rounded-tr-lg rounded-br-lg cursor-default">
     <div class="w-full space-y-10 overflow-auto flex flex-col flex-shrink">
       <div class="w-full px-2 py-2 flex">
         <div>
           <h1 class="text-sm">{{ idea.topic }}</h1>
           <h1 class="text-4xl">{{ idea.title }}</h1>
-          <h1 class="text-sm text-gray">// posted by {{idea.name}}</h1>
+          <h1 class="text-sm">// posted by {{ idea.name }}</h1>
         </div>
-        <div *ngIf="editMode == true" class="ml-auto flex space-x-5 ">
+        <div *ngIf="editMode == true" class="ml-auto flex space-x-5">
           <button (click)="editIdea(idea.id)">
-            <img src="/assets/edit.png " class="object-contain"  >
+            <img src="/assets/edit.png " class="object-contain" />
           </button>
           <button (click)="deleteIdea(idea.id)">
-            <img src="/assets/close.png " class="object-contain" >
+            <img src="/assets/close.png " class="object-contain" />
           </button>
-
         </div>
       </div>
       <div class="w-full">
         <h1 class="text-xl px-3 object-contain">
-         {{idea.idea}}
+          {{ idea.idea }}
         </h1>
       </div>
-
-      </div>
+    </div>
   </div>
 </div>

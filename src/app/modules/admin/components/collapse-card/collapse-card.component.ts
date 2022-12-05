@@ -8,6 +8,7 @@ import { Component, OnInit  , Input} from '@angular/core';
 export class CollapseCardComponent implements OnInit {
 
   @Input() title : string;
+  @Input() name : string;
   showContent : boolean = false;
   constructor() { }
 

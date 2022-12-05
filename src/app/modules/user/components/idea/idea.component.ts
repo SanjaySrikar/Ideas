@@ -18,9 +18,9 @@ export class IdeaComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _topicService: TopicService,
-    private _loginService: LoginService,
     private _ideaService: IdeaService
-  ) {}
+  ) {
+  }
   getTopics() {
     this._topicService.getTopics().subscribe((data) => {
       this.topics = data;
@@ -28,15 +28,15 @@ export class IdeaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.idea);
     if (this.route.snapshot.params['id'] != 0) {
-      console.log(this.route.snapshot.params['id']);
       this._ideaService
         .getIdeaById(this.route.snapshot.params['id'])
         .subscribe((data) => {
           this.idea = data;
         });
     }
-    this.idea.name = this._loginService.getUserName();
+    // this.idea.name = this._loginService.getUserName();
     this.getTopics();
   }
   onSubmit() {

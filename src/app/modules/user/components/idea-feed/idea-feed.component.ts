@@ -23,7 +23,7 @@ export class IdeaFeedComponent implements OnInit {
   ideas$: Observable<idea[]>;
   topics$: topic[];
   _topic: topic;
-  admin: boolean = true;
+  admin: boolean = false;
   toggleSelect: boolean = false;
   adminSetting: boolean = false;
   topicNames: string[];
@@ -38,6 +38,9 @@ export class IdeaFeedComponent implements OnInit {
     private _ideaService: IdeaService
   ) {
     this.value = 'name';
+    if(this._loginService.getUserRole() == "ADMIN"){
+      this.admin = true;
+    }
   }
 
   ngOnInit(): void {
@@ -97,7 +100,6 @@ export class IdeaFeedComponent implements OnInit {
       new_filter_topics.push(element);
     });
     this.topics = new_filter_topics;
-    // console.log(this.topics);
     // if only this.filter_topics.push(value) then make the pipe impure,
     // pure pipes ( default) will only be called if the array type or reference changes , hence reference has been changed above
   }

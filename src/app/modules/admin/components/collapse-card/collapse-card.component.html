@@ -1,4 +1,9 @@
-<div class="cursor-pointer"  (click)="toggleContent()" >
-  <h1 class="text-xl ml-2 hover:text-gray">{{title}}</h1>
+<div class="cursor-pointer  "  (click)="toggleContent()" >
+  <div class="header flex items-center">
+    <h1 class="text-lg ml-2 hover:text-light-gray">{{title}}</h1>
+    <h1 class="text-xs ml-2 text-light-gray  hover:text-light-gray ">posted by /{{name}}</h1>
+  </div>
+
+
   <ng-content *ngIf="showContent"></ng-content>
 </div>
