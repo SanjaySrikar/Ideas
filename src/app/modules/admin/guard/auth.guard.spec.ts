@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthGuard } from './auth.guard';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 describe('AuthGuard', () => {
   let authGuard: AuthGuard;
@@ -25,13 +26,13 @@ describe('AuthGuard', () => {
   });
 
   it('should return true if user is an admin', () => {
-    spyOn(loginService, 'getUserRole').and.returnValue('ADMIN');
+    spyOn(loginService, 'getUserRole').and.returnValue(of('ADMIN'));
     expect(authGuard.canActivate(null, null)).toBe(true);
   });
 
   it('should return false and redirect to /no-permission if user is not an admin', () => {
     // Arrange
-    spyOn(loginService, 'getUserRole').and.returnValue('USER');
+    spyOn(loginService, 'getUserRole').and.returnValue(of('USER'));
 
     expect(authGuard.canActivate(null, null)).toBeFalsy();
     expect(router.navigateByUrl).toHaveBeenCalledWith('/no-permission');
