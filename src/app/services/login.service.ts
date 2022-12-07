@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { role } from '../models/role';
 import { user } from '../models/user';
@@ -34,13 +34,13 @@ export class LoginService {
   getUserName() {
     return JSON.parse(localStorage.getItem('userName'));
   }
-  getUserRole() {
-    let id:number = Number(localStorage.getItem('user_id'));
-    this.http.get(`${environment.BASE_URL}` + 'user/role/' + id).subscribe( (data:role) => {
-      localStorage.setItem('userRole', JSON.stringify(data.name));
-    });
-    return JSON.parse(localStorage.getItem('userRole'));
+  getUserRole(): Observable<string> {
+    let id: number = Number(localStorage.getItem('user_id'));
+    return this.http.get(`${environment.BASE_URL}` + 'user/role/' + id).pipe(
+      map((data: role) => data.name)
+    );
   }
+
 
   logout() {
     localStorage.clear();

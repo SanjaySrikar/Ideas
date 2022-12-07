@@ -28,7 +28,6 @@ export class IdeaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.idea);
     if (this.route.snapshot.params['id'] != 0) {
       this._ideaService
         .getIdeaById(this.route.snapshot.params['id'])

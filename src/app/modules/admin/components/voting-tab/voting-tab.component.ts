@@ -16,16 +16,7 @@ export class VotingTabComponent implements OnInit {
   private margin = 100;
   private width = 650 - this.margin * 2;
   private height = 500 - this.margin * 2;
-  // pollData = [
-  //   {
-  //     title: poll.ideas[0].title,
-  //     poll_votes: poll.ideas[0].poll_votes
-  //   },
-  //   {
-  //     title: poll.ideas[1].title,
-  //     poll_votes: poll.ideas[1].poll_votes
-  //   }
-  // ];
+
   private createSvg(): void {
     this.svg = d3
       .select('figure#bar')
@@ -76,7 +67,7 @@ export class VotingTabComponent implements OnInit {
       .attr('y', (d) => y(d.poll_votes))
       .attr('width', x.bandwidth())
       .attr('height', (d) => this.height - y(d.poll_votes))
-      .attr('fill', '#00122');
+      .attr('fill', '#FFFFFF');
   }
 
   ngOnInit(): void {

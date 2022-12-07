@@ -2,11 +2,11 @@
   class="min-w-full  flex grow-[6] bg-blend-hue backdrop-blur-xl  space-x-10 shadow-lg  border border-jet-blue rounded-xl shadow-dark-blue "
 >
 <span
-[ngClass]="{'fill-light-red': hasVoted}"
-class="vote inline-block absolute  hover:fill-light-red   w-10 h-96 shadow-md min-h-max max-w-fit rounded-tl-lg rounded-bl-lg px-0.5 py-1.5  space-y-1"
+[ngClass]="{'fill-red': hasVoted}"
+class="vote inline-block absolute  hover:fill-red   w-10 h-96 shadow-md min-h-max max-w-fit rounded-tl-lg rounded-bl-lg px-0.5 py-1.5  space-y-1"
 >
 
-  <svg width="36" height="36" class="rotate-180 cursor-pointer" (click)="upVote(idea.id)">
+  <svg width="36" height="36" class="rotate-180 cursor-pointer dark:invert" (click)="upVote(idea.id)">
     <path d="M2 10h32L18 26 2 10z" fill="fill-red"></path>
   </svg>
   <h1 class="ml-3">{{idea.votes.length}}</h1>

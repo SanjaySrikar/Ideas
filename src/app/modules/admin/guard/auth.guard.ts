@@ -11,18 +11,18 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // if(this._loginService.getUserRole() == "USER"){
-      //   this.router.navigateByUrl('/login')
-      //   return true;
-      // }
-      if(this._loginService.getUserRole() == "ADMIN"){
+      console.log(localStorage.getItem('userRole'));
+      if(localStorage.getItem('userRole') == "ADMIN"){
         return true;
+      } else {
+
+        this.router.navigateByUrl('/no-permission')
+        return false;
       }
 
-      this.router.navigateByUrl('/no-permission')
-      return false;
 
 
   }
 
 }
+``

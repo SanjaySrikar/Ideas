@@ -38,7 +38,6 @@ export class PollsComponent implements OnInit {
     this.polls.forEach((poll) => {
       this._pollService.userHasVoted(poll.id, user_id).subscribe((data) => {
         this.hasVoted[poll.id] = data;
-        console.log(this.hasVoted)
       });
     });
   }

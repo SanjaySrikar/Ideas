@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   error: boolean = false;
   message: string = '';
   ngOnInit(): void {
+    localStorage.setItem('theme', 'light')
     this.userForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -43,14 +44,20 @@ export class LoginComponent implements OnInit {
           this.userName = value.username;
           localStorage.setItem('user_id', JSON.stringify(this.user_id));
           localStorage.setItem('userName', JSON.stringify(this.userName));
-          const role: string = this._loginService.getUserRole();
-          if (role == 'ADMIN') {
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate(['/user']);
-          }
+          this._loginService.getUserRole().subscribe({
+            next: (role: string) => {
+              localStorage.setItem('userRole', role);
+              if (role == 'ADMIN') {
+                this.router.navigate(['/admin']);
+              } else {
+                this.router.navigate(['/user']);
+              }
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
         },
-
         error: (err) => {
           this.error = true;
           this.message = 'INVALID CREDENTIALS';
@@ -59,6 +66,11 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+
+
+
+
   toggleFillColor() {
     // this.fillColor = this.fillColor === '#CCD83F' ? '#FFFFFF' : '#CCD83F';
     if (this.fillColor == '#CCD83F') {

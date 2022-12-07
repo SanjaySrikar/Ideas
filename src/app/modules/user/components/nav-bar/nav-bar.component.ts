@@ -27,7 +27,7 @@ export class NavBarComponent implements OnInit {
   isDarkMode: boolean;
   ngOnInit(): void {
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
-    this.renderer.setStyle(this.moonPath3.nativeElement, 'fill', this.fillColor);
+    // this.renderer.setStyle(this.moonPath3.nativeElement, 'fill', this.fillColor);
   }
 
   logout() {
