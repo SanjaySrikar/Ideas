@@ -38,7 +38,7 @@ export class IdeaFeedComponent implements OnInit {
     private _ideaService: IdeaService
   ) {
     this.value = 'name';
-    if(this._loginService.getUserRole() == "ADMIN"){
+    if(localStorage.getItem('userRole') == "ADMIN"){
       this.admin = true;
     }
   }
@@ -103,6 +103,4 @@ export class IdeaFeedComponent implements OnInit {
     // if only this.filter_topics.push(value) then make the pipe impure,
     // pure pipes ( default) will only be called if the array type or reference changes , hence reference has been changed above
   }
-  upVote() {}
-  downVote() {}
 }

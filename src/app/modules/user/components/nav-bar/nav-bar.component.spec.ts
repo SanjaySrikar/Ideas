@@ -1,28 +1,34 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { LoginService } from 'src/app/services/login.service';
-
+import { async, TestBed } from '@angular/core/testing';
 import { NavBarComponent } from './nav-bar.component';
+import { LoginService } from 'src/app/services/login.service';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
-  let fixture: ComponentFixture<NavBarComponent>;
+  let loginService: jasmine.SpyObj<LoginService>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    loginService = jasmine.createSpyObj('LoginService', ['logout']);
+
+    TestBed.configureTestingModule({
       declarations: [ NavBarComponent ],
-      imports : [HttpClientTestingModule,RouterTestingModule],
-      providers:[LoginService]
+      providers: [
+        { provide: LoginService, useValue: loginService },
+      ],
     })
     .compileComponents();
+  }));
 
-    fixture = TestBed.createComponent(NavBarComponent);
+  beforeEach(() => {
+    const fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call the logout method of the login service when logout is called', () => {
+    component.logout();
+    expect(loginService.logout).toHaveBeenCalled();
   });
 });

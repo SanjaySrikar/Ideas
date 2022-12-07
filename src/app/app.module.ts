@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './common-components/page-not-found/page-n
     HttpClientModule
 
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

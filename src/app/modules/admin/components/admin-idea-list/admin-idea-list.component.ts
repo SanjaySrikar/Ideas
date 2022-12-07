@@ -15,7 +15,8 @@ export class AdminIdeaListComponent implements OnInit {
   payload: payload = {
     topic: undefined,
     ideas: [],
-    votes: []
+    votes: [],
+    users: []
   };
   limit: boolean = false;
   showContent: boolean = false;

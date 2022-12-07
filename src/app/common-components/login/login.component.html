@@ -1,62 +1,110 @@
-<body class="bg-gray w-full h-screen font-poppins absolute">
+<body class="bg-gray dark:bg-jet-blue w-full h-screen font-poppins absolute">
   <div
-    class="mt-40 mx-auto p-9 rounded-lg shadow-lg bg-white max-w-lg max-h-full w-full h-fit space-y-10"
+    class="mt-40 mx-auto p-9 rounded-lg shadow-lg dark:bg-jet-blue dark:bg-opacity-20 dark:text-white bg-white max-w-lg max-h-full w-full h-fit space-y-10"
   >
-    <div>
-      <h1 class="text-3xl font-bold">Login</h1>
-      <p class="text-sm text-gray">Share your idea!</p>
+    <div class="flex">
+      <div>
+        <h1 class="text-3xl font-bold">Login</h1>
+        <p class="text-sm text-gray">Share your idea!</p>
+      </div>
+      <div class="ml-auto">
+        <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="#000"
+        class="cursor-pointer border-2 border-white  rounded-full "
+        xmlns="http://www.w3.org/2000/svg"
+        (click)="toggleFillColor()"
+      >
+        <path
+          #moonPath1
+          d="M12.5 13.5A3.5 3.5 0 0 1 9 10A3.5 3.5 0 0 1 12.5 6.5A3.5 3.5 0 0 1 16 10A3.5 3.5 0 0 1 12.5 13.5Z"
+        />
+        <path
+          #moonPath2
+          d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+        />
+        <path
+          #moonPath3
+          d="M12 7.5C12.83 7.5 13.5 6.83 13.5 6C13.5 5.17 12.83 4.5 12 4.5C11.17 4.5 10.5 5.17 10.5 6C10.5 6.83 11.17 7.5 12 7.5Z"
+        />
+
+        <rect
+          x="11.5"
+          y="11.5"
+          width="1"
+          height="1"
+          rx="0.5"
+          stroke="#000"
+          stroke-width="1"
+          fill="#FFFFFF"
+        />
+        <rect
+          x="11.5"
+          y="11.5"
+          width="1"
+          height="1"
+          rx="0.5"
+          stroke="#000"
+          stroke-width="1"
+          fill="#FFFFFF"
+        />
+      </svg>
+      </div>
     </div>
 
     <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
-      <span *ngIf="error" class="text-xs text-red">Incorrect details or not registered</span>
       <div class="mb-6">
         <label for="username"> Username </label>
         <input
-        [ngClass]="{
-          'border-b-light-red':
-            !userForm.controls['username'].valid && submitted
-        }"
-          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          [ngClass]="{
+            'border-b-light-red':
+              !userForm.controls['username'].valid && submitted
+          }"
+          class="block w-full border dark:bg-jet-blue border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="text"
           formControlName="username"
         />
         <span
-        class="text-xs text-red"
-        *ngIf="userForm.controls['username'].errors?.['required'] && submitted"
-        >This field is required</span
-      >
-      <span
-        class="text-xs text-red"
-        *ngIf="userForm.controls['username'].errors?.['minlength'] "
-        >Username must be more than 6 characters</span
-      >
+          class="text-xs text-red"
+          *ngIf="userForm.controls['username'].errors?.['required'] && submitted"
+          >This field is required</span
+        >
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['username'].errors?.['minlength'] "
+          >Username must be more than 6 characters</span
+        >
       </div>
       <div class="mb-6">
         <label for="password"> Password </label>
         <input
-        [ngClass]="{
-          'border-b-light-red':
-            !userForm.controls['password'].valid && submitted
-        }"
-          class="block w-full border border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
+          [ngClass]="{
+            'border-b-light-red':
+              !userForm.controls['password'].valid && submitted
+          }"
+          class="block w-full border dark:bg-jet-blue border-light-gray rounded-lg px-2 py-1.5 focus:outline-none focus:border-1 focus:border-gray"
           type="password"
           formControlName="password"
         />
         <span
-        class="text-xs text-red"
-        *ngIf="userForm.controls['password'].errors?.['required'] && submitted"
-        >This field is required</span
-      >
-      <span
-        class="text-xs text-red"
-        *ngIf="userForm.controls['password'].errors?.['minlength'] "
-        >Password must be more than 6 characters</span
-      >
+          class="text-xs text-red"
+          *ngIf="userForm.controls['password'].errors?.['required'] && submitted"
+          >This field is required</span
+        >
+        <span
+          class="text-xs text-red"
+          *ngIf="userForm.controls['password'].errors?.['minlength'] "
+          >Password must be more than 6 characters</span
+        >
       </div>
+
       <div class="text-center mt-14">
+        <span class="text-xs text-red">{{ message }} </span>
         <button
           type="submit"
-          class="rounded-lg bg-gray w-full py-1.5 hover:text-white"
+          class="rounded-lg bg-gray dark:bg-jet-blue w-full py-1.5 hover:text-white"
         >
           Submit
         </button>

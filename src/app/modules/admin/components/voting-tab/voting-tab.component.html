@@ -1,16 +1,24 @@
-<body class="w-full min-h-screen absolute bg-gray font-poppins bg-cover bg-bottom"  background="/assets/circle2.svg">
+<!-- <body
+  class="w-full min-h-screen absolute bg-gray font-poppins bg-cover bg-bottom"
+  background="/assets/circle2.svg"
+>
+
   <div *ngFor="let poll of polls">
-    <div class="flex  justify-center mt-20 mb-10 text-2xl font-semibold">{{ poll.ideas[0].topic }}</div>
-    <div class="w-2/3 voting flex flex-shrink rounded-lg space-x-10 mx-auto mb-10">
+    <div class="flex justify-center mt-20 mb-10 text-2xl font-semibold">
+      {{ poll.ideas[0].topic }}
+    </div>
+    <div
+      class="w-2/3 voting flex flex-shrink rounded-lg space-x-10 mx-auto mb-10"
+    >
       <div
-        class="card bg-gray h-80 w-full border-2 p-2 flex flex-col flex-shrink  shadow-lg shadow-jet-blue"
+        class="card bg-blend-hue backdrop-blur-xl h-80 w-full border-2 p-2 flex flex-col flex-shrink shadow-lg shadow-jet-blue"
       >
         <div class="card-header flex justify-evenly items-center">
           <h1 class="font-bold text-4xl">{{ poll.ideas[0].title }}</h1>
           <h1 class="text-xs text-light-gray ml-4">
             posted by {{ poll.ideas[0].name }}
           </h1>
-          <h1 class="ml-auto">{{ poll.ideas[0].votes.length }}</h1>
+          <h1 class="ml-auto">{{ poll.ideas[0].poll_votes }}</h1>
         </div>
         <div class="w-full flex mt-20">
           <p>
@@ -19,14 +27,14 @@
         </div>
       </div>
       <div
-        class="card h-80 flex bg-gray w-full flex-col p-2 border-2 flex-shrink shadow-lg shadow-jet-blue"
+        class="card h-80 flex bg-blend-hue backdrop-blur-xl  w-full flex-col p-2 border-2 flex-shrink shadow-lg shadow-jet-blue"
       >
         <div class="card-header flex justify-evenly items-center">
           <h1 class="font-bold text-4xl">{{ poll.ideas[1].title }}</h1>
           <h1 class="text-xs text-light-gray ml-4">
             posted by {{ poll.ideas[1].name }}
           </h1>
-          <h1 class="ml-auto">{{ poll.ideas[1].upVotes }}</h1>
+          <h1 class="ml-auto">{{ poll.ideas[1].poll_votes }}</h1>
         </div>
         <div class="w-full flex mt-20">
           <p>
@@ -35,5 +43,15 @@
         </div>
       </div>
     </div>
+  </div>
+</body> -->
+
+<body
+  class="w-screen min-h-screen absolute bg-gray font-poppins bg-cover bg-bottom"
+  background="/assets/circle2.svg"
+>
+  <div class="flex flex-col mb-10 justify-center items-center space-y-10 mt-20 min-h-screen  ">
+    <h2 class="text-4xl font-bold bg-gray">Voting Status</h2>
+    <figure id="bar" class="border-2 font-bold text-xl border-jet-blue backdrop-blur-lg"></figure>
   </div>
 </body>

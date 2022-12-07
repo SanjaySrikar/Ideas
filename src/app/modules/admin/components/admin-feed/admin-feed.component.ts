@@ -27,7 +27,8 @@ export class AdminFeedComponent implements OnInit {
   poll_payload: payload[] = [];
   polls : poll = {
     id : 0,
-    ideas : []
+    ideas : [],
+    users : []
   };
 
   ngOnInit(): void {

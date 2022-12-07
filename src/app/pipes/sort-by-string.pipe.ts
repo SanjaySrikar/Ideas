@@ -5,6 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortByStringPipe implements PipeTransform {
   transform(value: any[], ...args: string[]): any[] {
+    if(args.length === 0) {
+      return value;
+    }
     if(value == undefined || args == undefined) {
       return null;
     }
@@ -12,7 +15,7 @@ export class SortByStringPipe implements PipeTransform {
       let result = value.filter(ele => ele.name == args[1])
       if (args[0] == 'votes') {
         return result.sort((n1, n2) => {
-          return n2.upVotes - n1.upVotes;
+          return n2.votes.length - n1.votes.length;
         });
       } else if (args[0] == 'downVotes') {
         return result.sort((n1, n2) => {
@@ -22,7 +25,7 @@ export class SortByStringPipe implements PipeTransform {
   }
     if (args[0] == 'votes') {
       return value.sort((n1, n2) => {
-        return n1.upVotes - n2.upVotes;
+        return n2.votes.length - n1.votes.length;
       });
     } else if (args[0] == 'downVotes') {
       return value.sort((n1, n2) => {

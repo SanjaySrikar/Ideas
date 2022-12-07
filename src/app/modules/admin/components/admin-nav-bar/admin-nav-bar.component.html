@@ -1,22 +1,82 @@
 <header
-  class="bg-jet-blue font-poppins flex items-center justify-between px-4 py-4  text-white "
+  class="bg-jet-blue font-poppins flex items-center justify-between px-4 py-4 text-white"
 >
   <div class="flex space-x-4 items-center">
-    <img class="w-10" src="/assets/idea.png" alt="could not fetch" />
+    <img class="w-10 invert" src="/assets/idea.png" alt="could not fetch" />
     <h1 class="text-3xl">Ideas</h1>
   </div>
 
   <nav class="">
-    <ul class="flex flex-row space-x-20 mr-5 ">
+    <ul class="flex flex-row space-x-20 mr-5">
       <li>
-        <a [routerLink]="'/admin/landing'" routerLinkActive="active">Home</a>
+        <a
+          [routerLink]="'/admin/landing'"
+          routerLinkActive="text-gray text-xl hover:text-light-gray"
+          >Home</a
+        >
       </li>
       <li>
-        <a [routerLink]="'/admin/feed'" routerLinkActive="active"> Ideas</a>
+        <a
+          [routerLink]="'/admin/feed'"
+          routerLinkActive="text-gray text-xl hover:text-light-gray"
+        >
+          Ideas</a
+        >
       </li>
-      <li><a [routerLink]="'/admin/voting'" routerLinkActive="active">Voting Status</a></li>
+      <li>
+        <a
+          [routerLink]="'/admin/voting'"
+          routerLinkActive="text-gray text-xl hover:text-light-gray"
+          >Voting Status</a
+        >
+      </li>
     </ul>
   </nav>
-  <button (click)="logout()">Logout</button>
+  <div class="flex space-x-4">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="#FFFFFF"
+      class="cursor-pointer"
+      xmlns="http://www.w3.org/2000/svg"
+      (click)="toggleFillColor()"
+    >
+      <path
+        #moonPath1
+        d="M12.5 13.5A3.5 3.5 0 0 1 9 10A3.5 3.5 0 0 1 12.5 6.5A3.5 3.5 0 0 1 16 10A3.5 3.5 0 0 1 12.5 13.5Z"
+      />
+      <path
+        #moonPath2
+        d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+      />
+      <path
+        #moonPath3
+        d="M12 7.5C12.83 7.5 13.5 6.83 13.5 6C13.5 5.17 12.83 4.5 12 4.5C11.17 4.5 10.5 5.17 10.5 6C10.5 6.83 11.17 7.5 12 7.5Z"
+      />
+
+      <rect
+        x="11.5"
+        y="11.5"
+        width="1"
+        height="1"
+        rx="0.5"
+        stroke="#CCD83F"
+        stroke-width="1"
+        fill="none"
+      />
+      <rect
+        x="11.5"
+        y="11.5"
+        width="1"
+        height="1"
+        rx="0.5"
+        stroke="#000"
+        stroke-width="1"
+        fill="none"
+      />
+    </svg>
+    <button (click)="logout()">Logout</button>
+  </div>
 </header>
 <router-outlet></router-outlet>

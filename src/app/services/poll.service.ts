@@ -17,5 +17,11 @@ export class PollService {
   addPoll(value: poll , topic_id :number ) : Observable<poll>{
     return this.http.post<poll>(`${environment.BASE_URL}` + 'poll/create/' + topic_id, value);
   }
+  votePoll(poll_id:number , idea_id:number , user_id:number) : Observable<poll>{
+    return this.http.put<poll>(`${environment.BASE_URL}` + 'poll/vote/' + poll_id + '/' + idea_id + '/' + user_id, {});
+  }
+  userHasVoted(poll_id:number , user_id:number) : Observable<boolean>{
+    return this.http.get<boolean>(`${environment.BASE_URL}` + 'poll/check/' + poll_id + '/' + user_id);
+  }
 
 }

@@ -1,28 +1,34 @@
-import { HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginService } from 'src/app/services/login.service';
-
+import { async, TestBed, waitForAsync } from '@angular/core/testing';
 import { AdminNavBarComponent } from './admin-nav-bar.component';
+import { LoginService } from 'src/app/services/login.service';
 
 describe('AdminNavBarComponent', () => {
   let component: AdminNavBarComponent;
-  let fixture: ComponentFixture<AdminNavBarComponent>;
+  let loginService: jasmine.SpyObj<LoginService>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AdminNavBarComponent],
-      imports:[HttpClientTestingModule],
-      providers: [LoginService,HttpClient]
+  beforeEach(waitForAsync(() => {
+    loginService = jasmine.createSpyObj('LoginService', ['logout']);
+
+    TestBed.configureTestingModule({
+      declarations: [ AdminNavBarComponent ],
+      providers: [
+        { provide: LoginService, useValue: loginService },
+      ],
     })
     .compileComponents();
+  }));
 
-    fixture = TestBed.createComponent(AdminNavBarComponent);
+  beforeEach(() => {
+    const fixture = TestBed.createComponent(AdminNavBarComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call the logout method of the login service when logout is called', () => {
+    component.logout();
+    expect(loginService.logout).toHaveBeenCalled();
   });
 });

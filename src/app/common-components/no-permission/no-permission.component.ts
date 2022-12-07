@@ -13,6 +13,6 @@ export class NoPermissionComponent implements OnInit {
     alert('No Admin Privileges. Redirecting in 10s');
     setTimeout(() => {
       this.router.navigateByUrl('/user');
-    }, 10000);
+    }, 1000);
   }
 }

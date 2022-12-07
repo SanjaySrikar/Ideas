@@ -8,6 +8,7 @@ module.exports = {
     colors:{
       'white' : '#FFFFFF',
       'gray' : '#97ADBD',
+      'light-black':'#1F2937',
       'light-gray':'#F3F5F7',
       'light-red' : '#A4797C',
       'light-green':'#EEFFDB',
@@ -19,6 +20,10 @@ module.exports = {
     extend: {
       fontFamily:{
         'poppins' : ['Poppins', 'sans-serif']
+      },
+      backgroundImage:{
+        'dark': "url('/assets/circle4.svg')",
+        'light': "url('/assets/circle2.svg')",
       }
     },
   },

@@ -13,6 +13,11 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if(localStorage.getItem('userRole') === "ADMIN"){
+      console.log("heloo")
+      this.router.navigate(['/admin']);
+    }else{
+      console.log(localStorage.getItem('userRole'))
+    }
   }
 }

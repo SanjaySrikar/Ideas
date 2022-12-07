@@ -1,22 +1,22 @@
 <div
-  class="topic-add absolute p-2 top-52 left-24 w-2/12 h-fit bg-gray border-2 border-jet-blue rounded-lg shadow-xl shadow-dark-blue"
+  class="topic-add absolute p-2 top-52 left-24 w-2/12 h-fit bg-blend-hue backdrop-blur-xl border-2 border-jet-blue rounded-lg shadow-xl shadow-dark-blue"
 >
   <h1 class="font-semibold text-lg text-center">Topics</h1>
 
   <div class="mt-5 flex flex-row" *ngFor="let _topic of topics">
     <h1 class="p-2 cursor-default font-bold flex space-x-2">
-      <img class="object-contain mr-2 w-2" src="/assets/dot.png" />{{ _topic.name }}
+      <img class="object-contain mr-2 w-2 dark:invert" src="/assets/dot.png" />{{ _topic.name }}
     </h1>
     <button class="ml-auto">
       <img
         src="/assets/close.png"
-        class="object-contain"
+        class="object-contain dark:invert"
         (click)="removeTopic(_topic)"
       />
     </button>
   </div>
   <div *ngIf="addTopicBtn == true" class="p-2 flex">
-    <img class="object-contain mr-2 w-2" src="/assets/dot.png" />
+    <img class="object-contain dark:invert mr-2 w-2" src="/assets/dot.png" />
     <input
       [(ngModel)]="topicAdd.name"
       (change)="addTopic()"
@@ -26,6 +26,6 @@
     />
   </div>
   <button class="mt-6 ml-36" (click)="addTopicClick()">
-    <img class="object-contain" src="/assets/plus.png" />
+    <img class="object-contain dark:invert" src="/assets/plus.png" />
   </button>
 </div>

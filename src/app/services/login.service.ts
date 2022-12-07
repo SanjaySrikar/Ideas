@@ -43,8 +43,7 @@ export class LoginService {
   }
 
   logout() {
-    localStorage.setItem('user_id', null);
-    localStorage.removeItem('user_id');
+    localStorage.clear();
     this.router.navigateByUrl('/login');
   }
 }
