@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { IdeaFeedComponent } from '../idea-feed/idea-feed.component';
 
 import { LandingPageComponent } from './landing-page.component';
 
@@ -8,7 +10,8 @@ describe('LandingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent ]
+      declarations: [ LandingPageComponent  ],
+      imports:[HttpClientTestingModule]
     })
     .compileComponents();
 

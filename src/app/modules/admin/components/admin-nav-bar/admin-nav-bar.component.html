@@ -4,6 +4,7 @@
   <div class="flex space-x-4 items-center">
     <img class="w-10 invert" src="/assets/idea.png" alt="could not fetch" />
     <h1 class="text-3xl">Ideas</h1>
+    <h1 class="text-sm">{{username}}'s hub</h1>
   </div>
 
   <nav class="">
@@ -11,14 +12,14 @@
       <li>
         <a
           [routerLink]="'/admin/landing'"
-          routerLinkActive="text-gray text-xl hover:text-light-gray"
+          routerLinkActive="text-gray text-2xl hover:text-light-gray"
           >Home</a
         >
       </li>
       <li>
         <a
           [routerLink]="'/admin/feed'"
-          routerLinkActive="text-gray text-xl hover:text-light-gray"
+          routerLinkActive="text-gray text-2xl hover:text-light-gray"
         >
           Ideas</a
         >
@@ -26,7 +27,7 @@
       <li>
         <a
           [routerLink]="'/admin/voting'"
-          routerLinkActive="text-gray text-xl hover:text-light-gray"
+          routerLinkActive="text-gray text-2xl hover:text-light-gray"
           >Voting Status</a
         >
       </li>

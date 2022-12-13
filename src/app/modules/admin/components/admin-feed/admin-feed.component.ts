@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Email } from 'src/app/models/email';
 import idea from 'src/app/models/idea';
 import { poll } from 'src/app/models/poll';
 import payload from 'src/app/models/poll-payload';
 import { topic } from 'src/app/models/topic';
+import { EmailService } from 'src/app/services/email.service';
 import { IdeaService } from 'src/app/services/idea.service';
 import { PollService } from 'src/app/services/poll.service';
 import { TopicService } from 'src/app/services/topic.service';
@@ -18,7 +20,8 @@ export class AdminFeedComponent implements OnInit {
     private _topicServie: TopicService,
     private _ideaService: IdeaService,
     private _pollService: PollService,
-    private router: Router
+    private router: Router,
+    private _emailService: EmailService
   ) {}
   ideas: idea[];
   topics: topic[];
@@ -29,6 +32,11 @@ export class AdminFeedComponent implements OnInit {
     id : 0,
     ideas : [],
     users : []
+  };
+  email : Email = {
+    to : '',
+    subject : '',
+    text : ''
   };
 
   ngOnInit(): void {
@@ -83,9 +91,14 @@ export class AdminFeedComponent implements OnInit {
         this.polls.ideas.push(idea);
       });
     });
+    this.email.text = "A new poll has been created. Please vote for your favourite idea. It is" + this.polls.ideas[0].title + " " + " vs " + " " + this.polls.ideas[1].title;
     this.polls.id = this.poll_payload[0].topic.id
     this._pollService.addPoll(this.polls ,this.poll_payload[0].topic.id).subscribe((data) => {
-      this.router.navigateByUrl('/voting');
+      this.router.navigateByUrl('/admin/voting');
+      this._emailService.sendMail(this.email).subscribe((data) => {
+        console.log(data);
+      }
+      );
     });
   }
 

@@ -25,7 +25,10 @@ export class NavBarComponent implements OnInit {
   //if localstorage theme is dark then set fillColor to yellow else set it to white
   fillColor = localStorage.getItem('theme') === 'dark' ? '#CCD83F' : '#FFFFFF';
   isDarkMode: boolean;
+  username : string ;
   ngOnInit(): void {
+    this.username = JSON.parse(localStorage.getItem('userName'));
+    console.log(this.username)
     this.isDarkMode = localStorage.getItem('theme') === 'dark';
     // this.renderer.setStyle(this.moonPath3.nativeElement, 'fill', this.fillColor);
   }

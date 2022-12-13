@@ -21,7 +21,10 @@ export class AdminNavBarComponent implements OnInit {
   @ViewChild('moonPath2') moonPath2: ElementRef;
   @ViewChild('moonPath3') moonPath3: ElementRef;
   fillColor = '#CCD83F';
-  ngOnInit(): void {}
+  username : string;
+  ngOnInit(): void {
+    this.username = JSON.parse(localStorage.getItem('userName'));
+  }
   toggleFillColor() {
     // this.fillColor = this.fillColor === '#CCD83F' ? '#FFFFFF' : '#CCD83F';
     if (this.fillColor == '#CCD83F') {

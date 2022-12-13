@@ -19,6 +19,8 @@ import { IdeaCardComponent } from './components/idea-card/idea-card.component';
 import { SortTopicPipe } from '../../pipes/sort-topic.pipe';
 import { PollsComponent } from './components/polls/polls.component';
 import { AdminModule } from '../admin/admin.module';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { HotIdeasComponent } from './components/hot-ideas/hot-ideas.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AdminModule } from '../admin/admin.module';
     IdeaCardComponent,
     SortTopicPipe,
     PollsComponent,
+    UserListComponent,
+    HotIdeasComponent,
 
   ],
   imports: [

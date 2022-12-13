@@ -1,10 +1,55 @@
-<body class="bg-gray w-screen h-screen font-poppins absolute overflow-auto">
+<body class="dark:bg-dark bg-light w-screen h-screen font-poppins absolute overflow-auto bg-bottom bg-cover">
   <div
-    class="mt-36 mx-auto p-9 rounded-lg shadow-lg bg-white w-4/5 max-w-2xl max-h-screen h-fit space-y-10"
+    class="mt-36 mx-auto p-9 rounded-lg shadow-lg backdrop-blur-lg dark:text-white shadow-dark-blue w-4/5 max-w-2xl max-h-screen h-fit space-y-10"
   >
     <div>
       <h1 class="text-3xl font-bold">Register</h1>
       <p class="text-sm text-gray">Your idea may change the world!</p>
+    </div>
+    <div class="ml-auto">
+      <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="#000"
+      class="cursor-pointer border-2 border-white  rounded-full "
+      xmlns="http://www.w3.org/2000/svg"
+      (click)="toggleFillColor()"
+    >
+      <path
+        #moonPath1
+        d="M12.5 13.5A3.5 3.5 0 0 1 9 10A3.5 3.5 0 0 1 12.5 6.5A3.5 3.5 0 0 1 16 10A3.5 3.5 0 0 1 12.5 13.5Z"
+      />
+      <path
+        #moonPath2
+        d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+      />
+      <path
+        #moonPath3
+        d="M12 7.5C12.83 7.5 13.5 6.83 13.5 6C13.5 5.17 12.83 4.5 12 4.5C11.17 4.5 10.5 5.17 10.5 6C10.5 6.83 11.17 7.5 12 7.5Z"
+      />
+
+      <rect
+        x="11.5"
+        y="11.5"
+        width="1"
+        height="1"
+        rx="0.5"
+        stroke="#000"
+        stroke-width="1"
+        fill="#FFFFFF"
+      />
+      <rect
+        x="11.5"
+        y="11.5"
+        width="1"
+        height="1"
+        rx="0.5"
+        stroke="#000"
+        stroke-width="1"
+        fill="#FFFFFF"
+      />
+    </svg>
     </div>
 
     <div class="flex justify-end">

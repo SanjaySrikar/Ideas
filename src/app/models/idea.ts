@@ -10,6 +10,7 @@ type idea = {
   upVotes ?: number,
   downVotes ?: number,
   createdDate ?: Date,
+  updatedDate ?: Date,
   votes ?:  vote[]
 };
 export default idea;

@@ -11,20 +11,22 @@ describe('SortByStringPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  // it('should sort the input array in ascending order by the specified property', () => {
-  //   const input = [
-  //     { name: 'foo', votes: 10 },
-  //     { name: 'bar', votes: 5 },
-  //     { name: 'baz', votes: 15 },
-  //   ];
-  //   const expectedOutput = [
-  //     { name: 'bar', votes: 5 },
-  //     { name: 'foo', votes: 10 },
-  //     { name: 'baz', votes: 15 },
-  //   ];
+  it('should return the input array of length of arguments is zero', () => {
+    const input = [
+      { name: 'foo', votes: 10 },
+      { name: 'bar', votes: 5 },
+      { name: 'baz', votes: 15 },
+    ];
 
-  //   expect(pipe.transform(input, 'votes')).toEqual(expectedOutput);
-  // });
+    expect(pipe.transform(input)).toEqual(input);
+  });
+
+
+
+  it('should return null if the input or arguments are undefined', () => {
+    expect(pipe.transform(undefined)).toEqual(undefined);
+    expect(pipe.transform([], undefined)).toEqual([]);
+  });
 
   it('should sort the input array in descending order by the specified property', () => {
     const input = [

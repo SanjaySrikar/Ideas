@@ -42,4 +42,14 @@ export class IdeaService {
       `${environment.BASE_URL}` + 'idea/' + 'delete/' + id
     );
   }
+  getTop3Ideas(): Observable<idea[]> {
+    return this.http.get<idea[]>(
+      `${environment.BASE_URL}` + 'idea/' + 'get/top3'
+    );
+  }
+  downloadIdea(id: number): Observable<any> {
+    return this.http.get<any>(
+      `${environment.BASE_URL}` + 'idea/' + 'download/' + id , {responseType: 'application/txt' as 'json'}
+    );
+  }
 }

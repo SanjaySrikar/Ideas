@@ -10,7 +10,7 @@ import * as d3 from 'd3';
 })
 export class VotingTabComponent implements OnInit {
   constructor(private _pollService: PollService) {}
-  polls: payload[];
+  polls: payload[] = [];
   pollData: PollData[] = [];
   private svg;
   private margin = 100;
@@ -104,7 +104,10 @@ export class VotingTabComponent implements OnInit {
           title: poll.ideas[1].title,
           poll_votes: poll.ideas[1].poll_votes,
         });
-      });
+
+
+      },
+      (err) => alert("Poll for this topic has already been created"));
     });
   }
 }

@@ -1,3 +1,5 @@
+import idea from "./idea";
+
 export interface user {
   id: number;
   username: string;
@@ -6,5 +8,6 @@ export interface user {
   email: string;
   phone_no: number;
   password: string;
+  ideas ?: idea[];
 };
 

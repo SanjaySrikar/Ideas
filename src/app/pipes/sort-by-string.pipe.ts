@@ -17,19 +17,11 @@ export class SortByStringPipe implements PipeTransform {
         return result.sort((n1, n2) => {
           return n2.votes.length - n1.votes.length;
         });
-      } else if (args[0] == 'downVotes') {
-        return result.sort((n1, n2) => {
-          return n2.downVotes - n1.downVotes;
-        });
-    }
+      }
   }
     if (args[0] == 'votes') {
       return value.sort((n1, n2) => {
         return n2.votes.length - n1.votes.length;
-      });
-    } else if (args[0] == 'downVotes') {
-      return value.sort((n1, n2) => {
-        return n2.downVotes - n1.downVotes;
       });
     } else {
       if (args[1] != undefined) {

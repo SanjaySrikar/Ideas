@@ -1,6 +1,7 @@
 import { async, TestBed, waitForAsync } from '@angular/core/testing';
 import { AdminNavBarComponent } from './admin-nav-bar.component';
 import { LoginService } from 'src/app/services/login.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AdminNavBarComponent', () => {
   let component: AdminNavBarComponent;
@@ -11,6 +12,7 @@ describe('AdminNavBarComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ AdminNavBarComponent ],
+      imports:[ RouterTestingModule],
       providers: [
         { provide: LoginService, useValue: loginService },
       ],

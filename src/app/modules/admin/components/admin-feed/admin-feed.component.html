@@ -36,7 +36,7 @@
   <div
     class="topic-add backdrop-blur-lg absolute p-2 top-52 right-[2rem] w-3/12 h-fit border-2 border-jet-blue rounded-lg shadow-xl shadow-dark-blue"
   >
-    <h1 class="font-semibold text-lg text-center">Polls</h1>
+    <h1 class="font-semibold text-xl text-center">Polls</h1>
 
     <div
       class="mt-5 flex flex-row"
@@ -49,11 +49,11 @@
           src="/assets/dot.png"
         />{{ poll.topic.name }}
       </h1>
-      <div
-        *ngFor="let idea of poll.ideas"
-        class="flex  items-center justify-evenly space-x-5"
-      >
+      <div *ngFor="let idea of poll.ideas" class="p-2 space-x-5 text-center">
+        <div>
           <h1 class="font-bold">{{ idea.title }}</h1>
+          <h1 class="">posted by {{ idea.name }}</h1>
+        </div>
       </div>
       <div class="ml-auto flex items-center mt-10 space-x-5">
         <button class="" (click)="removeIdea(poll.topic)">

@@ -5,14 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   // constructor(private localStorage : locals) {}
 
-  ngOnInit(): void {
-  }
+
   // import local storage service and add light theme
   // to local storage on init
-
 
   title = 'Ideas';
 }

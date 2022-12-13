@@ -61,6 +61,11 @@ export class IdeaCardComponent implements OnInit {
         });
     }
   }
+  download(id : number){
+    this._ideaService.downloadIdea(id).subscribe((data) => {
+      console.log(data);
+    });
+  }
   ngOnInit(): void {
     this.userHasVoted(this.idea.id);
   }

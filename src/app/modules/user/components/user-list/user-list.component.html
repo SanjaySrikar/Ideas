@@ -1,0 +1,22 @@
+<div class="container font-poppins border border-jet-blue shadow-lg shadow-dark-blue h-3/4 min-h-fit rounded-xl backdrop-blur-lg w-1/5 p-2 fixed top-auto mt-[45px] ml-20 m-0">
+
+  <div class="head flex justify-between mb-10">
+    <h1 class="font-bold text-2xl ml-4">Users</h1>
+    <h1 class="font-bold text-2xl">#Ideas</h1>
+  </div>
+
+  <div class="flex justify-between p-2" *ngFor="let user of users">
+    <div class="flex items-center">
+      <img
+        class="rounded-full w-10 h-10 dark:invert"
+        src="/assets/user.png"
+        alt=""
+      />
+      <h1 class="ml-2">/{{ user.username }}</h1>
+    </div>
+    <h1>{{ user.ideas.length }}</h1>
+
+  </div>
+
+
+</div>

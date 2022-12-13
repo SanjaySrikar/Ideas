@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { user } from 'src/app/models/user';
@@ -12,10 +12,15 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private _loginService: LoginService
+    private _loginService: LoginService,
+    private renderer: Renderer2
   ) {}
   userForm: FormGroup;
+  @ViewChild('moonPath1') moonPath1: ElementRef;
+  @ViewChild('moonPath2') moonPath2: ElementRef;
+  @ViewChild('moonPath3') moonPath3: ElementRef;
   userData: user;
+  fillColor = '#CCD83F';
   submitted: boolean = false;
   user_id: number;
   ngOnInit(): void {
@@ -38,6 +43,62 @@ export class RegisterComponent implements OnInit {
   backToLogin() {
     this.router.navigateByUrl('/login');
   }
+  toggleFillColor() {
+    // this.fillColor = this.fillColor === '#CCD83F' ? '#FFFFFF' : '#CCD83F';
+    if (this.fillColor == '#CCD83F') {
+      this.fillColor = '#000000';
+      this.renderer.setStyle(
+        this.moonPath3.nativeElement,
+        'fill',
+        this.fillColor
+      );
+      this.renderer.setStyle(
+        this.moonPath1.nativeElement,
+        'fill',
+        this.fillColor
+      );
+      this.renderer.setStyle(
+        this.moonPath2.nativeElement,
+        'fill',
+        this.fillColor
+      );
+      // check if the theme in localstorage is light
+      // if it is then do nothing else set it to light
+      if (localStorage.getItem('theme') === 'dark') {
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    // if fillcolor is white then change it to yellow and set localstorage theme to dark
+    else if (this.fillColor === '#000000') {
+      this.fillColor = '#CCD83F';
+      this.renderer.setStyle(
+        this.moonPath3.nativeElement,
+        'fill',
+        this.fillColor
+      );
+      this.renderer.setStyle(
+        this.moonPath1.nativeElement,
+        'fill',
+        this.fillColor
+      );
+      this.renderer.setStyle(
+        this.moonPath2.nativeElement,
+        'fill',
+        this.fillColor
+      );
+
+      localStorage.setItem('theme', 'dark');
+    }
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      !('theme' in localStorage)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
 
   onRegister() {
     //validate user inputs

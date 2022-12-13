@@ -1,7 +1,20 @@
 <body
-  class=" w-full min-h-screen absolute font-poppins bg-cover bg-bottom dark:bg-dark dark:text-white bg-light "
-
+  class="w-full min-h-screen absolute font-poppins bg-cover bg-bottom dark:bg-dark dark:text-white bg-light"
 >
+  <div class="flex justify-end p-2 ml-10">
+    <button (click)="hide()">
+      <img
+        src="/assets/hide.png"
+        title="hide side-bars"
+        class="object-contain w-7 hover:cursor-pointer dark:invert"
+      />
+    </button>
+  </div>
+  <div *ngIf="!hidden">
+    <app-user-list></app-user-list>
+    <app-hot-ideas></app-hot-ideas>
+  </div>
+
   <div
     class="rounded-t-lg mx-auto border-b-0 min-h-screen w-2/5 mt-10 px-2 py-2 max-h-max space-y-10"
   >
@@ -13,12 +26,14 @@
         *ngIf="!admin"
         class="px-2 py-2 rounded-full flex space-x-4"
       >
-        <img src="/assets/plus2.png" class="hover:bg-gray rounded-full" />
+        <img src="/assets/plus2.png" class="hover:bg-gray rounded-full dark:invert" />
         <h1 class="hover:text-light-gray">Create Idea?</h1>
       </button>
-      <div class="ml-auto bg-gray dark:bg-jet-blue">
+      <div
+        class="ml-auto bg-gray bg-blend-hue backdrop-blur-xl rounded-xl dark:bg-jet-blue"
+      >
         <select
-          class="px-2 py-2 cursor-pointer outline-none bg-gray dark:bg-jet-blue hover:text-light-gray rounded-xl"
+          class="px-2 py-2 cursor-pointer outline-none bg-gray bg-blend-hue backdrop-blur-xl dark:bg-jet-blue hover:text-light-gray rounded-xl"
           [(ngModel)]="value"
         >
           <option
@@ -31,7 +46,7 @@
         </select>
       </div>
     </div>
-    <!--TOPICS AREA-->
+    <!-- TOPICS AREA -->
     <div
       class="rounded-xl bg-blend-hue backdrop-blur-xl flex flex-wrap p-2 border border-jet-blue items-center shadow-lg shadow-dark-blue"
     >
@@ -43,7 +58,7 @@
         <button class="cursor-pointer" (click)="removeTopic(topic)">
           <img
             src="/assets/close3.png"
-            class="ml-1 hover:bg-gray rounded-full w-4 object-contain"
+            class="ml-1 hover:bg-gray rounded-full w-4 object-contain dark:invert"
           />
         </button>
       </span>
@@ -66,11 +81,11 @@
         </option>
       </select>
       <button (click)="toggleSel()" class="ml-1">
-        <img src="/assets/plus.png" class="cursor-pointer object-contain" />
+        <img src="/assets/plus.png" class="cursor-pointer object-contain dark:invert" />
       </button>
     </div>
-
-    <!--CARD AREA-->
+    <!--
+    CARD AREA -->
 
     <div
       *ngFor="

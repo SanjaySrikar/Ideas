@@ -4,6 +4,7 @@
   <div class="flex space-x-4 items-center">
     <img class="w-10 invert" src="/assets/idea.png" alt="could not fetch" />
     <h1 class="text-3xl">Ideas</h1>
+    <h1 class="text-sm">{{username}}'s hub</h1>
   </div>
 
   <nav class="">
@@ -11,14 +12,14 @@
       <li>
         <a
           [routerLink]="'/user/landing'"
-          routerLinkActive="text-gray text-xl hover:text-gray"
+          routerLinkActive="text-gray text-2xl hover:text-gray"
           >Home</a
         >
       </li>
       <li>
         <a
           [routerLink]="'/user/my-ideas'"
-          routerLinkActive="text-gray text-xl hover:text-gray"
+          routerLinkActive="text-gray text-2xl hover:text-gray"
           [routerLinkActiveOptions]="{ exact: true }"
           >My Ideas</a
         >
@@ -26,7 +27,7 @@
       <li>
         <a
           [routerLink]="'/user/polls'"
-          routerLinkActive="text-gray text-xl hover:text-gray"
+          routerLinkActive="text-gray text-2xl hover:text-gray"
           >Polls</a
         >
       </li>
@@ -76,7 +77,9 @@
         fill="#FFFFFF"
       />
     </svg>
+
     <button (click)="logout()">Logout</button>
+
   </div>
 </header>
 <router-outlet></router-outlet>

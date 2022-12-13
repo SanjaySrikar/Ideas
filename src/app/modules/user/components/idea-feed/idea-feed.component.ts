@@ -16,6 +16,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class IdeaFeedComponent implements OnInit {
   @Input() name: string;
   @Input() editMode: boolean;
+  hidden : boolean = true;
   ideas: idea[];
   types!: string[];
   value!: string;
@@ -48,6 +49,9 @@ export class IdeaFeedComponent implements OnInit {
     this.getTopics();
     // set all values of topicNames to topics$
     this.getIdeas();
+  }
+  hide(){
+    this.hidden = !this.hidden;
   }
   toggleSel() {
     this.toggleSelect = !this.toggleSelect;

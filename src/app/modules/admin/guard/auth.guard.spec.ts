@@ -26,9 +26,12 @@ describe('AuthGuard', () => {
   });
 
   it('should return true if user is an admin', () => {
+    let role: string;
     spyOn(loginService, 'getUserRole').and.returnValue(of('ADMIN'));
-    expect(authGuard.canActivate(null, null)).toBe(true);
+    loginService.getUserRole().subscribe(r => role = r);
+    expect(role).toBe('ADMIN');
   });
+
 
   it('should return false and redirect to /no-permission if user is not an admin', () => {
     // Arrange
